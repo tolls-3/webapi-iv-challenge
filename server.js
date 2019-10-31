@@ -16,7 +16,11 @@ server.get("/", (req, res) => {
 //custom middleware
 
 function logger(req, res, next) {
-  console.log(`[${new Date().toISOString()}] ${req.method} to ${req.url}`);
+  console.log(
+    `[${new Date().toLocaleDateString()}, ${new Date().toLocaleTimeString()}] ${
+      req.method
+    } to ${req.url}`
+  );
   next();
 }
 
