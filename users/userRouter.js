@@ -20,7 +20,7 @@ router.post("/", validateUser, (req, res) => {
 
 router.post("/:id/posts", validateUserId, validatePost, (req, res) => {
   dbPost
-    .insert(req.body.text, req.user.id)
+    .insert({ user_id: req.user.id, text: req.body.text })
     .then(post => {
       res.status(200).json(post);
     })
